@@ -1,4 +1,4 @@
-FROM php:5.6-cli
+FROM debian:jessie
 MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
 RUN apt-get update \
