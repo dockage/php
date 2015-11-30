@@ -6,6 +6,7 @@ PHP_USER=php
 # Add & config PHP user
 echo "$PHP_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 useradd --create-home --user-group ${PHP_USER}
+sudo -u ${PHP_USER} -H sh -c "echo \"export PATH=$PATH:/home/php/.composer/vendor/bin\" >> /home/${PHP_USER}/.bashrc"
 
 # Install globally composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
