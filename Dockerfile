@@ -9,5 +9,4 @@ RUN apt-get update \
 COPY /assets/install.sh /usr/bin/install.sh
 RUN chmod 755 /usr/bin/install.sh && /usr/bin/install.sh
 
-USER php
 CMD ["php", "-a"]
