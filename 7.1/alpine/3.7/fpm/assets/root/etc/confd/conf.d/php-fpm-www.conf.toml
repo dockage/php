@@ -1,0 +1,11 @@
+[template]
+src = "php-fpm-www.conf.tmpl"
+dest = "/etc/php7/php-fpm.d/www.conf"
+uid = 0
+gid = 0
+mode = "0644"
+keys = [
+  "php-fpm"
+]
+check_cmd = "/usr/sbin/php-fpm7 -t"
+reload_cmd = "/etc/init.d/php-fpm7 reload"
