@@ -1,4 +1,4 @@
-FROM dockage/confd:alpine3.8
+FROM dockage/confd:alpine3.5
 MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
 LABEL org.label-schema.name="php" \
@@ -9,7 +9,7 @@ LABEL org.label-schema.name="php" \
 
 COPY assets/root/ /
 
-RUN apk --no-cache --update add php7-fpm=7.2.8-r0 \
+RUN apk --no-cache --update add php7-fpm=7.0.30-r0 \
     && rc-update add php-fpm7 default
 
 EXPOSE 9000
