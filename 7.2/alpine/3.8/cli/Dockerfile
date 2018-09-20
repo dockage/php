@@ -1,6 +1,6 @@
 FROM php:7.2.10-cli-alpine3.8 as official-image
 
-FROM dockage/alpine3.8
+FROM dockage/alpine:3.8
 MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
 LABEL org.label-schema.name="php" \
