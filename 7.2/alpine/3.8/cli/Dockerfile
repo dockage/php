@@ -13,4 +13,5 @@ COPY --from=official-image /usr/local/bin/docker-php-entrypoint /usr/local/bin/e
 
 RUN apk --no-cache --update add php7=7.2.10-r0
 
+ENTRYPOINT ["entrypoint"]
 CMD ["php", "-a"]
