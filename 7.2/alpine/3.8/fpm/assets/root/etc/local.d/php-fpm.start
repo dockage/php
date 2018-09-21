@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-set -eu
-
-# We can change "access.log" value to "/proc/self/fd/1" after resolved this bug: https://bugs.php.net/bug.php?id=73886
-sed -i -e "s#;error_log = .*#error_log = /proc/self/fd/2#g" \
-    -e "s#;access.log = .*#access.log = /proc/self/fd/2#g" \
-/etc/php7/php-fpm.conf
