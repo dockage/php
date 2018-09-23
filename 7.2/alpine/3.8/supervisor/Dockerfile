@@ -10,8 +10,8 @@ LABEL org.label-schema.name="php" \
         org.label-schema.license="MIT"
 
 RUN apk --no-cache --update add supervisor php7=7.2.10-r0 \
+    && mkdir -p /etc/supervisor.d \
     && sed -i \
-        -e 's#logfile=/var/log/supervisord.log#logfile=/proc/self/fd/2#g' \
         -e 's#;nodaemon=\w*\(\s*\)\(.*\)#nodaemon=true\1\2#g' \
         -e 's#;user=\w*\(\s*\)\(.*\)#user=root\1\2#g' \
         /etc/supervisord.conf
