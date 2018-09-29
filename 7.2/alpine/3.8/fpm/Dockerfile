@@ -1,5 +1,3 @@
-FROM php:7.2.10-fpm-alpine3.8 as official-image
-
 FROM dockage/alpine:3.8
 MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
@@ -10,11 +8,21 @@ LABEL org.label-schema.name="php" \
         org.label-schema.license="MIT"
 
 RUN apk --no-cache --update add php7-fpm=7.2.10-r0 \
-    && ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm
+    && ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm \
+    && sed -i \
+        -e 's#;error_log =.*#error_log = /proc/self/fd/2#g' \
+        -e 's#;daemonize =.*#daemonize = no#g' \
+        /etc/php7/php-fpm.conf \
+    && sed -i \
+        # if we send this to /proc/self/fd/1, it never appears
+        -e 's#;access.log =.*#access.log = /proc/self/fd/2#g' \
+        -e 's#;clear_env =.*#clear_env = no#g' \
+        # Ensure worker stdout and stderr are sent to the main error log.
+        -e 's#;catch_workers_output =.*#catch_workers_output = yes#g' \
+        -e 's#listen =.*#listen = 9000#g' \
+        /etc/php7/php-fpm.d/www.conf
 
-COPY --from=official-image /usr/local/bin/docker-php-entrypoint /usr/local/bin/entrypoint
-COPY --from=official-image /usr/local/etc/php-fpm.d/docker.conf /etc/php7/php-fpm.d
-COPY --from=official-image /usr/local/etc/php-fpm.d/zz-docker.conf /etc/php7/php-fpm.d
+COPY assets/root/ /
 
 EXPOSE 9000
 
