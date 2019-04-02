@@ -1,18 +1,21 @@
 FROM dockage/alpine:3.8
-MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
-LABEL org.label-schema.name="php" \
-        org.label-schema.vendor="Dockage" \
-        org.label-schema.description="Docker PHP image built on Alpine Linux" \
-        org.label-schema.vcs-url="https://github.com/dockage/php" \
-        org.label-schema.license="MIT"
+STOPSIGNAL SIGTERM
 
-RUN apk --no-cache --update add php7-fpm=7.2.10-r0 \
-    && ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm \
+LABEL maintainer="m.abdolirad@gmail.com" \
+    org.label-schema.name="php" \
+    org.label-schema.vendor="Dockage" \
+    org.label-schema.description="Docker PHP image built on Alpine Linux" \
+    org.label-schema.version="7.2" \
+    org.label-schema.license="MIT"
+
+RUN wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
+    && echo "https://repos.php.earth/alpine/v3.8" >> /etc/apk/repositories \
+    && apk --no-cache --update add php7.2-fpm=7.2.16-r0 \
     && sed -i \
         -e 's#;error_log =.*#error_log = /proc/self/fd/2#g' \
         -e 's#;daemonize =.*#daemonize = no#g' \
-        /etc/php7/php-fpm.conf \
+        /etc/php/7.2/php-fpm.conf \
     && sed -i \
         # if we send this to /proc/self/fd/1, it never appears
         -e 's#;access.log =.*#access.log = /proc/self/fd/2#g' \
@@ -20,7 +23,7 @@ RUN apk --no-cache --update add php7-fpm=7.2.10-r0 \
         # Ensure worker stdout and stderr are sent to the main error log.
         -e 's#;catch_workers_output =.*#catch_workers_output = yes#g' \
         -e 's#listen =.*#listen = 9000#g' \
-        /etc/php7/php-fpm.d/www.conf
+        /etc/php/7.2/php-fpm.d/www.conf
 
 COPY assets/root/ /
 
