@@ -63,6 +63,79 @@ steps:
 
 ---
 kind: pipeline
+name: php7.2-alpine3.9
+
+steps:
+  - name: cli
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.2/alpine/3.9/cli/
+      dockerfile: 7.2/alpine/3.9/cli/Dockerfile
+      tags:
+        - '7.2.16-cli-alpine3.9'
+        - '7.2-cli-alpine3.9'
+        - '7.2.16-alpine3.9'
+        - '7.2-alpine3.9'
+        - '7.2.16-cli-alpine'
+        - '7.2-cli-alpine'
+        - '7.2.16-alpine'
+        - '7.2-alpine'
+
+  - name: fpm
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.2/alpine/3.9/fpm/
+      dockerfile: 7.2/alpine/3.9/fpm/Dockerfile
+      tags:
+        - '7.2.16-fpm-alpine3.9'
+        - '7.2-fpm-alpine3.9'
+        - '7.2.16-fpm-alpine'
+        - '7.2-fpm-alpine'
+
+  - name: supervisor
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.2/alpine/3.9/supervisor/
+      dockerfile: 7.2/alpine/3.9/supervisor/Dockerfile
+      tags:
+        - '7.2.16-supervisor-alpine3.9'
+        - '7.2-supervisor-alpine3.9'
+        - '7.2.16-supervisor-alpine'
+        - '7.2-supervisor-alpine'
+
+  - name: aio
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.2/alpine/3.9/aio/
+      dockerfile: 7.2/alpine/3.9/aio/Dockerfile
+      tags:
+        - '7.2.16-aio-alpine3.9'
+        - '7.2-aio-alpine3.9'
+        - '7.2.16-aio-alpine'
+        - '7.2-aio-alpine'
+
+---
+kind: pipeline
 name: notify
 
 steps:
@@ -74,3 +147,4 @@ steps:
 
 depends_on:
   - php7.2-alpine3.8
+  - php7.2-alpine3.9
