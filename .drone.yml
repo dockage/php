@@ -1,5 +1,171 @@
 ---
 kind: pipeline
+name: php7.3-alpine3.9
+
+steps:
+  - name: cli
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.9/cli/
+      dockerfile: 7.3/alpine/3.9/cli/Dockerfile
+      tags:
+        - '7.3.3-cli-alpine3.9'
+        - '7.3-cli-alpine3.9'
+        - '7-cli-alpine3.9'
+        - 'cli-alpine3.9'
+        - '7.3.3-alpine3.9'
+        - '7.3-alpine3.9'
+        - '7-alpine3.9'
+        - 'alpine3.9'
+        - '7.3.3-cli'
+        - '7.3-cli'
+        - '7-cli'
+        - 'cli'
+        - '7.3.3'
+        - '7.3'
+        - '7'
+        - 'latest'
+
+  - name: fpm
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.9/fpm/
+      dockerfile: 7.3/alpine/3.9/fpm/Dockerfile
+      tags:
+        - '7.3.3-fpm-alpine3.9'
+        - '7.3-fpm-alpine3.9'
+        - '7-fpm-alpine3.9'
+        - 'fpm-alpine3.9'
+        - '7.3.3-fpm'
+        - '7.3-fpm'
+        - '7-fpm'
+        - 'fpm'
+
+  - name: supervisor
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.9/supervisor/
+      dockerfile: 7.3/alpine/3.9/supervisor/Dockerfile
+      tags:
+        - '7.3.3-supervisor-alpine3.9'
+        - '7.3-supervisor-alpine3.9'
+        - '7-supervisor-alpine3.9'
+        - 'supervisor-alpine3.9'
+        - '7.3.3-supervisor'
+        - '7.3-supervisor'
+        - '7-supervisor'
+        - 'supervisor'
+
+  - name: aio
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.9/aio/
+      dockerfile: 7.3/alpine/3.9/aio/Dockerfile
+      tags:
+        - '7.3.3-aio-alpine3.9'
+        - '7.3-aio-alpine3.9'
+        - '7-aio-alpine3.9'
+        - 'aio-alpine3.9'
+        - '7.3.3-aio'
+        - '7.3-aio'
+        - '7-aio'
+        - 'aio'
+
+---
+kind: pipeline
+name: php7.3-alpine3.8
+
+steps:
+  - name: cli
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.8/cli/
+      dockerfile: 7.3/alpine/3.8/cli/Dockerfile
+      tags:
+        - '7.3.3-cli-alpine3.8'
+        - '7.3-cli-alpine3.8'
+        - '7-cli-alpine3.8'
+        - 'cli-alpine3.8'
+        - '7.3.3-alpine3.8'
+        - '7.3-alpine3.8'
+        - '7-alpine3.8'
+        - 'alpine3.8'
+
+  - name: fpm
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.8/fpm/
+      dockerfile: 7.3/alpine/3.8/fpm/Dockerfile
+      tags:
+        - '7.3.3-fpm-alpine3.8'
+        - '7.3-fpm-alpine3.8'
+        - '7-fpm-alpine3.8'
+        - 'fpm-alpine3.8'
+
+  - name: supervisor
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.8/supervisor/
+      dockerfile: 7.3/alpine/3.8/supervisor/Dockerfile
+      tags:
+        - '7.3.3-supervisor-alpine3.8'
+        - '7.3-supervisor-alpine3.8'
+        - '7-supervisor-alpine3.8'
+        - 'supervisor-alpine3.8'
+
+  - name: aio
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.8/aio/
+      dockerfile: 7.3/alpine/3.8/aio/Dockerfile
+      tags:
+        - '7.3.3-aio-alpine3.8'
+        - '7.3-aio-alpine3.8'
+        - '7-aio-alpine3.8'
+        - 'aio-alpine3.8'
+
+---
+kind: pipeline
 name: php7.2-alpine3.8
 
 steps:
@@ -146,5 +312,7 @@ steps:
         - https://hooks.microbadger.com/images/dockage/php/9f9k6_coS0GVJ4QWQYeTKJLIg2g=
 
 depends_on:
+  - php7.3-alpine3.9
+  - php7.3-alpine3.8
   - php7.2-alpine3.8
   - php7.2-alpine3.9
