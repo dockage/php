@@ -11,7 +11,7 @@ LABEL maintainer="m.abdolirad@gmail.com" \
 
 RUN  wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
     && echo "https://repos.php.earth/alpine/v3.8" >> /etc/apk/repositories \
-    &&  apk --no-cache --update add php7.3=7.3.3-r0 php7.3-fpm=7.3.3-r0 supervisor \
+    &&  apk --no-cache --update add php7.3=7.3.4-r0 php7.3-fpm=7.3.4-r0 supervisor \
     && sed -i \
         -e 's#;error_log =.*#error_log = /proc/self/fd/2#g' \
         -e 's#;daemonize =.*#daemonize = no#g' \

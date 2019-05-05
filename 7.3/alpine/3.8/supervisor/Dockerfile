@@ -11,7 +11,7 @@ LABEL maintainer="m.abdolirad@gmail.com" \
 
 RUN wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
     && echo "https://repos.php.earth/alpine/v3.8" >> /etc/apk/repositories \
-    && apk --no-cache --update add supervisor php7.3=7.3.3-r0 \
+    && apk --no-cache --update add supervisor php7.3=7.3.4-r0 \
     && mkdir -p /etc/supervisor.d \
     && sed -i \
         -e 's#;nodaemon=\w*\(\s*\)\(.*\)#nodaemon=true\1\2#g' \
