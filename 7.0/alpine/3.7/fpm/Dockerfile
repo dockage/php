@@ -9,7 +9,8 @@ LABEL maintainer="m.abdolirad@gmail.com" \
 
 RUN wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
     && echo "https://repos.php.earth/alpine/v3.7" >> /etc/apk/repositories \
-    && apk --no-cache --update add php7.0-fpm=7.0.33-r1
+    && apk --no-cache --update add php7.0-fpm=7.0.33-r1 \
+    && sed -i -e 's#pid =\(.*\)#;pid =\1#g' /etc/php/7.0/php-fpm.conf
 
 COPY assets/root/ /
 
