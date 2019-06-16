@@ -1,5 +1,4 @@
 FROM dockage/alpine:3.9
-MAINTAINER Mohammad Abdoli Rad <m.abdolirad@gmail.com>
 
 LABEL maintainer="m.abdolirad@gmail.com" \
     org.label-schema.name="php" \
