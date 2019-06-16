@@ -51,6 +51,26 @@ steps:
         - '7-fpm'
         - 'fpm'
 
+  - name: roadrunner
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: dockage/php
+      context: 7.3/alpine/3.9/roadrunner/
+      dockerfile: 7.3/alpine/3.9/roadrunner/Dockerfile
+      tags:
+        - '7.3.4-roadrunner-alpine3.9'
+        - '7.3-roadrunner-alpine3.9'
+        - '7-roadrunner-alpine3.9'
+        - 'roadrunner-alpine3.9'
+        - '7.3.4-roadrunner'
+        - '7.3-roadrunner'
+        - '7-roadrunner'
+        - 'roadrunner'
+
   - name: supervisor
     image: plugins/docker
     settings:
