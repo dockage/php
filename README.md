@@ -29,10 +29,6 @@ PHP is a server-side scripting language designed for web development, but which 
 ### PHP 7.1
 - `7.1.17-fpm-alpine3.7`, `7.1-fpm-alpine3.7`, `7.1.17-fpm-alpine`, `7.1-fpm-alpine` ([7.1/alpine/3.7/fpm/Dockerfile](https://github.com/dockage/php/blob/master/7.1/alpine/3.7/fpm/Dockerfile)) [![MicroBadger Size (7.1.17-fpm-alpine3.7)](https://img.shields.io/microbadger/image-size/dockage/php/7.1.17-fpm-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.1.17-fpm-alpine3.7) [![MicroBadger Layers (7.1.17-fpm-alpine3.7)](https://img.shields.io/microbadger/layers/dockage/php/7.1.17-fpm-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.1.17-fpm-alpine3.7)
 
-### PHP 7.0
-- `7.0.33-cli-alpine3.7`, `7.0-cli-alpine3.7`, `7.0.33-alpine3.7`, `7.0-alpine3.7`, `7.0.33-cli-alpine`, `7.0-cli-alpine`, `7.0.33-alpine`, `7.0-alpine` ([7.0/alpine/3.7/cli/Dockerfile](https://github.com/dockage/php/blob/master/7.0/alpine/3.7/cli/Dockerfile)) [![MicroBadger Size (7.0.33-cli-alpine3.7)](https://img.shields.io/microbadger/image-size/dockage/php/7.0.33-cli-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.0.33-cli-alpine3.7) [![MicroBadger Layers (7.0.33-cli-alpine3.7)](https://img.shields.io/microbadger/layers/dockage/php/7.0.33-cli-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.0.33-cli-alpine3.7)
-- `7.0.33-fpm-alpine3.7`, `7.0-fpm-alpine3.7`, `7.0.33-fpm-alpine`, `7.0-fpm-alpine` ([7.0/alpine/3.7/fpm/Dockerfile](https://github.com/dockage/php/blob/master/7.0/alpine/3.7/fpm/Dockerfile)) [![MicroBadger Size (7.0.33-fpm-alpine3.7)](https://img.shields.io/microbadger/image-size/dockage/php/7.0.33-fpm-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.0.33-fpm-alpine3.7) [![MicroBadger Layers (7.0.33-fpm-alpine3.7)](https://img.shields.io/microbadger/layers/dockage/php/7.0.33-fpm-alpine3.7.svg)](https://microbadger.com/images/dockage/php:7.0.33-fpm-alpine3.7)
-
 # Image Variants
 
 The `php` images come in many flavors, each designed for a specific use case.
