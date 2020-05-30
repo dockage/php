@@ -11,7 +11,7 @@ LABEL maintainer="m.abdolirad@gmail.com" \
 
 RUN  wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpearth.rsa.pub \
     && echo "https://repos.php.earth/alpine/v3.9" >> /etc/apk/repositories \
-    &&  apk --no-cache --update add php7.3=7.3.4-r0 php7.3-fpm=7.3.4-r0 supervisor \
+    &&  apk --no-cache --update add php7.3=7.3.4-r0 php7.3-fpm=7.3.4-r0 \
     && sed -i \
         -e 's#;error_log =.*#error_log = /proc/self/fd/2#g' \
         -e 's#;daemonize =.*#daemonize = no#g' \
@@ -23,13 +23,7 @@ RUN  wget -O /etc/apk/keys/phpearth.rsa.pub https://repos.php.earth/alpine/phpea
         # Ensure worker stdout and stderr are sent to the main error log.
         -e 's#;catch_workers_output =.*#catch_workers_output = yes#g' \
         -e 's#listen =.*#listen = 9000#g' \
-        /etc/php/7.3/php-fpm.d/www.conf \
-    # Configure supervisor daemon
-    && mkdir -p /etc/supervisor.d \
-    && sed -i \
-        -e 's#;nodaemon=\w*\(\s*\)\(.*\)#nodaemon=true\1\2#g' \
-        -e 's#;user=\w*\(\s*\)\(.*\)#user=root\1\2#g' \
-        /etc/supervisord.conf
+        /etc/php/7.3/php-fpm.d/www.conf
 
 COPY assets/root/ /
 

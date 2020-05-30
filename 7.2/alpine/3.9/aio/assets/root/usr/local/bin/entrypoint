@@ -20,15 +20,6 @@ fpm)
         set -- php-fpm
     fi
     ;;
-supervisor)
-    shift
-
-    if [ "${1#-}" != "$1" ]; then
-        set -- supervisord --configuration=/etc/supervisord.conf "$@"
-    else
-        set -- supervisord --configuration=/etc/supervisord.conf
-    fi
-    ;;
 esac
 
 exec "$@"
