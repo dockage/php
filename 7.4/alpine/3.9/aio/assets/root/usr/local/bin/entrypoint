@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+cli)
+    shift
+
+    if [ "${1#-}" != "$1" ]; then
+        set -- php "$@"
+    else
+        set -- php -a
+    fi
+    ;;
+fpm)
+    shift
+
+    if [ "${1#-}" != "$1" ]; then
+        set -- php-fpm "$@"
+    else
+        set -- php-fpm
+    fi
+    ;;
+esac
+
+exec "$@"
