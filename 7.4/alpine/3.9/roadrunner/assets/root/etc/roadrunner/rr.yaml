@@ -1,0 +1,13 @@
+http:
+  address: 0.0.0.0:80
+  workers:
+    command: "php /var/www/worker.php"
+    pool:
+      numWorkers: 8
+      maxJobs: 1000
+      allocateTimeout: 60
+      destroyTimeout: 60
+
+rpc:
+  enable: true
+  listen: tcp://127.0.0.1:6001
